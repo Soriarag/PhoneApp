@@ -10,14 +10,21 @@ class SelectionSortControl extends SortController {
 
   setMin(int index) => setPivot(index);
 
+  @override
+  run() {
+    running = true;
+    _sort();
+  }
+
+  @override
   Future _sort() async {
     //selection sort alg
     for (var iToSort = 0; iToSort < list_to_sort.length; iToSort++) {
-      var minVal = readNodeSilent(iToSort);
+      int minVal = readNodeSilent(iToSort);
       int minIndex = iToSort;
 
       for (var i = iToSort; i < list_to_sort.length; i++) {
-        var val = readNode(i);
+        var val = await readNode(i);
         if (val < minVal) {
           await reset(minIndex);
           await setMin(i);
@@ -25,10 +32,10 @@ class SelectionSortControl extends SortController {
           minIndex = i;
           minVal = val;
         }
-
-        swap(minIndex, iToSort);
-        setSorted(iToSort);
       }
+      await swap(minIndex, iToSort);
+      await setSorted(iToSort);
     }
+    running = false;
   }
 }

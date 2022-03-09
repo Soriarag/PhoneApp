@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:algo_app/animations/sorting/controller/selection_sort_controller.dart';
+import 'package:algo_app/utils/interactive/runButton.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:provider/provider.dart';
@@ -93,6 +94,7 @@ class MainMenu extends State<MyHomePage> {
                   ),
                 ),
               ),
+              runButton<SelectionSortControl>(key: UniqueKey())
             ],
           ),
         )), // This trailing comma makes auto-formatting nicer for build methods.

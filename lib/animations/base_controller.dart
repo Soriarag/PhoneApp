@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 abstract class BaseController extends ChangeNotifier {
   double _executionSpeed = 0.5;
   double get executionSpeed => _executionSpeed;
+  bool running = false;
   set executionSpeed(double speed) {
     if (speed > 1.0) {
       _executionSpeed = 1;
@@ -17,6 +18,8 @@ abstract class BaseController extends ChangeNotifier {
     _executionSpeed = speed;
     render();
   }
+
+  void run();
 
   @protected
   void render() {

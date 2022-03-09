@@ -7,7 +7,7 @@ enum SortNodeState { sorted, pivot, untreated, scanning }
 class NodeData {
   final int value;
   final GlobalKey key;
-  final int index;
+  int index;
   SortNodeState state = SortNodeState.untreated;
   Color color = Colors.black54;
 
